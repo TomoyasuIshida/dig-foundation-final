@@ -1,78 +1,102 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#header, #main, #footer {
+  display: flex;
+  flex-direction: column; /* 縦方向に要素を配置 */
+  justify-content: center; /* 中央に配置 */
+  align-items: center; /* 中央に配置 */
+  height: 100vh; /* ビューポートの高さいっぱいに要素を広げる */
+  width: 100%; /* 要素の幅をビューポートの幅いっぱいに広げる */
+}
+
 .hidden {
-    display: none;
-  }
-  
-  .visible {
-    display: block;
-  }
-  
-  #img-shop {
-    height: 500px;
-    width: auto;
-  }
-  
-  .button {
-    padding: 10px 20px;
-    margin: 10px 0;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .button:hover {
-    background-color: #45a049;
-  }
-  
-  #img-outside {
-    width: 200px;
-    height: auto;
-    cursor: pointer;
-  }
-  
-  #img-machine {
-    width: 200px;
-    height: auto;
-  }
-  
-  #img-staff {
-    width: 200px;
-    height: auto;
-  }
-  
-  #container-shop {
-    background-color: green;
-    width: 500px;
-    height: 500px;
-  }
-  
-  #container-machine {
-    background-color: blue;
-    width: 500px;
-    height: 500px;
-  }
-  
-  #container-select {
-    background-color: red;
-    width: 500px;
-    height: 500px;
-  }
-  
-  #container-order {
-    background-color: purple;
-    width: 500px;
-    height: 500px;
-  }
-  
-  #container-cooking {
-    background-color: black;
-    width: 500px;
-    height: 500px;
-  }
-  
-  #container-serve {
-    background-color: violet;
-    width: 500px;
-    height: 500px;
-  }
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+#img-shop {
+  height: 500px;
+  width: auto;
+}
+
+.button {
+  padding: 10px 20px;
+  margin: 10px 0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+#img-outside {
+  width: 200px;
+  height: auto;
+  cursor: pointer;
+}
+
+#img-machine {
+  width: 200px;
+  height: auto;
+}
+
+#img-staff {
+  width: 200px;
+  height: auto;
+}
+
+#container-shop {
+  width: 500px;
+  height: 500px;
+}
+
+#container-machine {
+  width: 500px;
+  height: 500px;
+}
+
+#container-select {
+  width: 500px;
+  height: 500px;
+}
+
+#container-order {
+  width: 500px;
+  height: 500px;
+}
+
+#container-cooking {
+  width: 500px;
+  height: 500px;
+}
+
+#container-serve {
+  width: 500px;
+  height: 500px;
+}
+
+.container{
+  justify-content: center;
+  align-items: center;
+}
+
+.go-home {
+  height: 100%; /* 画面いっぱいに広がる */
+  margin: 0; /* 外側の余白をゼロに設定 */
+  display: flex; /* Flexbox を使用して中央揃え */
+  justify-content: center; /* 左右中央に揃える */
+  align-items: center; /* 上下中央に揃える */
+  font-size: 24px; /* テキストのフォントサイズ */
+  text-align: center; /* テキストを中央揃え */
+}
+

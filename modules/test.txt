@@ -1,0 +1,37 @@
+objRamenType = {
+  "みそラーメン": 850,
+  "とんこつラーメン": 1050,
+  "
+}
+
+objRamenType = {"みそラーメン":850, ...}
+objSize = {"普通":0, "大盛り":100}
+objToppings = {"のり":100, ...}
+
+ticket = {
+  "みそラーメン": 850, 
+  "普通": 0, 
+  のり": 100,
+  "チャーシュー": 280
+}
+
+arrObj = [{ramenType}, {ramenSize}, {toppings},]
+
+"container-outside
+container-machine
+container-select-menu
+container-order
+container-cooking"
+container-serve" 
+
+export function showContainer(elementId) {
+  const arrContainers = [
+    "container-shop", 
+    "container-machine", 
+    "container-select", 
+      btn-select
+    "container-order", 
+      btn-start-coooking
+    "container-cooking", 
+    "container-serve"
+  ];

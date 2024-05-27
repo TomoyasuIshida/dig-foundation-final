@@ -1,5 +1,17 @@
 "use strict"
 
+function test(actual, expected) {
+  if (JSON.stringify(actual) === JSON.stringify(expected)) {
+    console.log("OK! Test PASSED.");
+  } else {
+    console.error("Test FAILED. Try again!");
+    console.log("    actual: ", actual);
+    console.log("  expected: ", expected);
+    console.trace();
+  }
+}
+
+
 // 指定コンテナを表示させる
 export function showContainer(elementId) {
   const arrContainers = [
@@ -54,21 +66,61 @@ export function getMenu(data) {
   return [objRamenType, objSize, objToppings];
 }
 
-/**
- * 
- * @param {string} id htmlタグのid要素
- * @param {object} menu メニュー
- * @returns 指定id要素で選択されているメニューからメニュー名と価格を返す
- */
-// return: {keyName:price}のオブジェクトを作成し返す
-export function returnNamePriceObj(id, menu) {
-  const retObj = {};
-  const value = document.getElementById(id).value;
+// /**
+//  * 
+//  * @param {string} id htmlタグのid要素
+//  * @param {object} menu メニュー
+//  * @returns 指定id要素で選択されているメニューからメニュー名と価格を返す
+//  */
+// // return: {keyName:price}のオブジェクトを作成し返す
+// // return {"みそラーメン":850}
+// export function returnNamePriceObj(id, menu) {
+//   const retObj = {};
+//   const value = document.getElementById(id).value;
+  
+//   for(const element in menu){
+//     retobj[id] = element[id].price;
+//   }
+//   // if (value !== "選択してください") {
+//   //   retObj[value] = menu[value].price;
+//   // }
+//   test(retObj);
+//   return retObj;
+// }
 
+/**
+ * 指定id要素で選択されているメニューからメニュー名と価格を返す
+ * @param {string} id HTMLタグのid要素
+ * @param {object} menu メニュー
+ * @returns {object} { keyName: price }のオブジェクトを作成し返す
+ */
+export function returnNamePriceObj(id, menu) {
+  const value = document.getElementById(id).value;
+  const price = menu[value];
   if (value !== "選択してください") {
-    retObj[value] = menu[value].price;
+    return { [value]: price };
   }
-  return retObj;
+  return {};
+}
+
+
+/**
+ * 指定したidのHTML要素が持つvalueに対応する価格を取得する
+ * @param {string} id HTMLタグのid要素
+ * @param {object} menu メニューオブジェクト
+ * @returns {number|null} 価格、該当する値がない場合はnull
+ */
+export function getPrice(id, menu) {
+  const element = document.getElementById(id);
+  const value = element.value;
+
+  for (const obj of menu) {
+    if(Number(obj[value])){
+      return obj[value];
+    }
+  }
+
+  return 0;
 }
 
 /**
@@ -80,36 +132,30 @@ export function returnNamePriceObj(id, menu) {
 // id:ramenType, size, topping1, topping2, topping3
 // 食券発行
 export function createTicket(menu) {
-  const arrItems = ["ramenType", "size"];
+  const arrIds = ["ramenType", "size"];
   const arrToppings = ["topping1", "topping2", "topping3"];
   const ticket = {};
 
-  // console.log("ramenType: " + document.getElementById("ramenType").value);
-  // for(const val of arrItems){
-  //   console.log("value: " + document.getElementById(val).value);
-  // }
-
-  // ra-men
-  Object.assign(ticket, returnNamePriceObj(arrItems, menu.ramenTypes))
-  console.log("aaaaaaaaaaa");
-  // size
-  // ラーメン種類とサイズのticket作成
-  for (let i = 0; i < 2; i++) {
-    for(const val of arrItems){
-      console.log("value: " + arrItems[i]);
-      console.log("arr: " + menu[i][arrItems[i]]);
+  for (const id of arrIds) {
+    const selectedValue = document.getElementById(id).value;
+    const price = getPrice(id, menu);
+    // test(menu, "selectedVal");
+    // test(price, 850);
+    if (price !== null) {
+      ticket[selectedValue] = price;
     }
-    // namePrice = ["みそらーめん", 850]
-    Object.assign(ticket, returnNamePriceObj(arrItems[i], menu[i][arrItems[i]]));
   }
   // トッピングをticketに追加
-  for (const topping of arrToppings) {
-    const selectedValue = document.getElementById(topping).value;
-    if (selectedValue !== "選択してください") {
-      Object.assign(ticket, returnNamePriceObj(topping, menu[3]));
+  for (const id of arrToppings) {
+    const selectedValue = document.getElementById(id).value;
+    const price = getPrice(id, menu);
+
+    if (price !== null) {
+      ticket[selectedValue] = price;
     }
   }
-  // ticket = {"みそラーメン":111, "普通":111, "のり":222}
+  // return {"みそラーメン":111, "普通":111, "のり":222};
+  // test(ticket,"ticket154")
   return ticket;
 }
 
@@ -121,7 +167,7 @@ export function createTicket(menu) {
 export function calcTotal(ticket) {
   let total = 0;
   for (const element in ticket) {
-    total = ticket + ticket[element].price;
+    total = total + ticket[element];
   }
   return total;
 }
@@ -133,11 +179,28 @@ export function calcTotal(ticket) {
  * @returns 計算結果がマイナスならfalse、そうでなければお釣りnumberを返す
  */
 export function calcChange(total, inputMoney) {
+  if(!Number(inputMoney)){
+    inputMoney = 0;
+  }
+
   const ret = inputMoney - total;
   if (ret < 0) {
     return false;
   }
   return ret;
+}
+
+export function noMoney() {
+  const container = document.createElement("div");
+  container.textContent = "冷やかしは帰んな！";
+  container.classList.add("go-home");
+
+  document.body.innerHTML = "";
+  document.body.appendChild(container);
+
+  setTimeout(() => {
+    location.reload();
+  }, 5000);
 }
 
 
@@ -147,24 +210,24 @@ export function calcChange(total, inputMoney) {
  * @returns [ramenType][ramenSize][]topping]...の配列にして整列し返す
  */
 export function objToArr(ticket) {
-  // const arr =  Object.entries(ticket);
   const arr = [];
 
-  for (const element of Object.entries(ticket)) {
-    for (const value of element) {
-      let i = 3; // トッピング用カウンタ
-      if (value.includes("ラーメン")) {
-        arr[0] = element;
-      } else if (value.includes("普通") || value.includes("大盛り")) {
-        arr[1] = element;
-      } else {
-        arr[i] = element;
-        i++;
-      }
+  let toppingIndex = 2; // トッピング用カウンタを2からスタート
+
+  for (const [key, value] of Object.entries(ticket)) {
+    if (key.includes("ラーメン")) {
+      arr[0] = [key, value];
+    } else if (key.includes("普通") || key.includes("大盛り")) {
+      arr[1] = [key, value];
+    } else {
+      arr[toppingIndex] = [key, value];
+      toppingIndex++;
     }
   }
+
   return arr;
 }
+
 
 /**
  * 
@@ -176,11 +239,11 @@ export function getRameninfo(ticket) {
   let ramenInfo = [];
 
   if (ramen === "ラーメン") {
-    ramenInfo = ["ラーメン", "./img/ramen.img"];
+    ramenInfo = ["ラーメン", "./img/ramen.png"];
   } else if (ramen === "みそラーメン") {
-    ramenInfo = ["みそラーメン", "./img/ramen_miso.img"];
+    ramenInfo = ["みそラーメン", "./img/ramen_miso.png"];
   } else {
-    rameninfo = ["地獄ラーメン", "./img/ramen.img"];
+    rameninfo = ["地獄ラーメン", "./img/ramen.png"];
   }
   return ramenInfo;
 }
