@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+  <h1>ラーメン</h1>
+  <div id="container-shop" class="">
+      <img id="img-shop" src="img/shop.png" alt="ラーメン屋">
+  </div>
+
+  <div id="container-machine" class="hidden">
+      <h2>券売機</h2>
+      <img id="img-machine" src="img/machine.png" alt="券売機">
+      <button class="button" id="next-order">次へ</button>
+  </div>
+  
+  <div id="container-select" class="hidden">
+      <h2>注文を選択してください</h2>
+      <label for="money">お金を入れてください: </label>
+      <input type="number" id="money" min="0"><br>
+      <label for="ramenType">ラーメンの種類: </label>
+      <select id="ramenType"></select><br>
+      <label for="size">サイズ</label>
+      <select id="size">サイズ: </select>
+      <label for="topping1">トッピング1: </label>
+      <select id="topping1" multiple></select><br>
+      <label for="topping2">トッピング2: </label>
+      <select id="topping2" multiple></select><br>
+      <label for="topping3">トッピング3: </label>
+      <select id="topping3" multiple></select><br>
+      <button class="button" id="btn-ticket">次へ</button>
+  </div>
+
+  <div id="container-order" class="hidden">
+      <h2>店員に渡して、お好みを選択してください</h2>
+      <img src="staff.png" alt="店員" id="img-staff"><br>
+      <label for="noodleHardness">麺の硬さ: </label>
+      <select id="noodleHardness">
+          <option value="柔らかめ">柔らかめ</option>
+          <option value="普通">普通</option>
+          <option value="硬め">硬め</option>
+      </select><br>
+      <button class="button" id="btn-start-coooking">調理開始</button>
+  </div>
+
+  <div id="container-cooking" class="hidden">
+      <h2>調理中...</h2>
+      <img src="cooking.png" alt="調理中" style="width:200px;height:auto;">
+      <button class="button" id="serveRamen">ラーメンを提供</button>
+  </div>
+
+  <div id="container-serve" class="hidden">
+      <h2>へいお待ちっ！</h2>
+      <img src="ramen.png" alt="ラーメン" style="width:200px;height:auto;">
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+
+</html>

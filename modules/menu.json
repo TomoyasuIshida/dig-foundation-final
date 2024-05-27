@@ -1,0 +1,58 @@
+{
+    "ramenTypes": [
+      {
+        "name": "ラーメン",
+        "price": 870
+      },
+      {
+        "name": "みそラーメン",
+        "price": 1050
+      },
+      {
+        "name": "地獄ラーメン",
+        "price": 1050
+      }
+    ],
+    "size": [
+      {
+        "name": "普通",
+        "price": 0
+      },
+      {
+        "name": "大盛り",
+        "price": 100
+      }
+    ],
+    "toppings": [
+      {
+        "name": "のり",
+        "price": 100
+      },
+      {
+        "name": "白髪ねぎ",
+        "price": 200
+      },
+      {
+        "name": "チャーシュー",
+        "price": 280
+      }
+    ],
+    "spiceLevel": [
+      {
+        "level": 1,
+        "name": "初級"
+      },
+      {
+        "level": 2,
+        "name": "中級"
+      },
+      {
+        "level": 3,
+        "name": "上級"
+      },
+      {
+        "level": 4,
+        "name": "極上級"
+      }
+    ]
+  }

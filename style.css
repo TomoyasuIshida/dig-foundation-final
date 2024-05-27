@@ -1,0 +1,78 @@
+.hidden {
+    display: none;
+  }
+  
+  .visible {
+    display: block;
+  }
+  
+  #img-shop {
+    height: 500px;
+    width: auto;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #45a049;
+  }
+  
+  #img-outside {
+    width: 200px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  #img-machine {
+    width: 200px;
+    height: auto;
+  }
+  
+  #img-staff {
+    width: 200px;
+    height: auto;
+  }
+  
+  #container-shop {
+    background-color: green;
+    width: 500px;
+    height: 500px;
+  }
+  
+  #container-machine {
+    background-color: blue;
+    width: 500px;
+    height: 500px;
+  }
+  
+  #container-select {
+    background-color: red;
+    width: 500px;
+    height: 500px;
+  }
+  
+  #container-order {
+    background-color: purple;
+    width: 500px;
+    height: 500px;
+  }
+  
+  #container-cooking {
+    background-color: black;
+    width: 500px;
+    height: 500px;
+  }
+  
+  #container-serve {
+    background-color: violet;
+    width: 500px;
+    height: 500px;
+  }
