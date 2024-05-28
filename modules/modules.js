@@ -11,8 +11,6 @@ function test(actual, expected) {
   }
 }
 
-
-// 指定コンテナを表示させる
 export function showContainer(elementId) {
   const arrContainers = [
     "container-shop",
@@ -33,7 +31,6 @@ export function showContainer(elementId) {
  * @param {string} url jsonファイルのパス 
  * @returns 指定されたJSONファイルを読み込み返す
  */
-// jsonを読み込む
 export async function loadJson(url) {
   const response = await fetch(url);
   return response.json();
@@ -66,28 +63,6 @@ export function getMenu(data) {
   return [objRamenType, objSize, objToppings];
 }
 
-// /**
-//  * 
-//  * @param {string} id htmlタグのid要素
-//  * @param {object} menu メニュー
-//  * @returns 指定id要素で選択されているメニューからメニュー名と価格を返す
-//  */
-// // return: {keyName:price}のオブジェクトを作成し返す
-// // return {"みそラーメン":850}
-// export function returnNamePriceObj(id, menu) {
-//   const retObj = {};
-//   const value = document.getElementById(id).value;
-  
-//   for(const element in menu){
-//     retobj[id] = element[id].price;
-//   }
-//   // if (value !== "選択してください") {
-//   //   retObj[value] = menu[value].price;
-//   // }
-//   test(retObj);
-//   return retObj;
-// }
-
 /**
  * 指定id要素で選択されているメニューからメニュー名と価格を返す
  * @param {string} id HTMLタグのid要素
@@ -102,7 +77,6 @@ export function returnNamePriceObj(id, menu) {
   }
   return {};
 }
-
 
 /**
  * 指定したidのHTML要素が持つvalueに対応する価格を取得する
@@ -128,9 +102,6 @@ export function getPrice(id, menu) {
  * @param {Array} menu 各メニュー表で構成された配列[objRamen, objSize...]
  * @returns 選択内容に応じた食券発行。オブジェクトで返す。ex.{みそラーメン":850, "普通":0}
  */
-// objs = objRamenType,
-// id:ramenType, size, topping1, topping2, topping3
-// 食券発行
 export function createTicket(menu) {
   const arrIds = ["ramenType", "size"];
   const arrToppings = ["topping1", "topping2", "topping3"];
@@ -139,13 +110,12 @@ export function createTicket(menu) {
   for (const id of arrIds) {
     const selectedValue = document.getElementById(id).value;
     const price = getPrice(id, menu);
-    // test(menu, "selectedVal");
-    // test(price, 850);
+
     if (price !== null) {
       ticket[selectedValue] = price;
     }
   }
-  // トッピングをticketに追加
+
   for (const id of arrToppings) {
     const selectedValue = document.getElementById(id).value;
     const price = getPrice(id, menu);
@@ -154,8 +124,7 @@ export function createTicket(menu) {
       ticket[selectedValue] = price;
     }
   }
-  // return {"みそラーメン":111, "普通":111, "のり":222};
-  // test(ticket,"ticket154")
+
   return ticket;
 }
 
@@ -203,7 +172,6 @@ export function noMoney() {
   }, 5000);
 }
 
-
 /**
  * 
  * @param {object} ticket ticketObject
@@ -212,7 +180,7 @@ export function noMoney() {
 export function objToArr(ticket) {
   const arr = [];
 
-  let toppingIndex = 2; // トッピング用カウンタを2からスタート
+  let toppingIndex = 2;
 
   for (const [key, value] of Object.entries(ticket)) {
     if (key.includes("ラーメン")) {
@@ -228,7 +196,6 @@ export function objToArr(ticket) {
   return arr;
 }
 
-
 /**
  * 
  * @param {object} ticket 関数createTicketで発行された食券
@@ -243,7 +210,7 @@ export function getRameninfo(ticket) {
   } else if (ramen === "みそラーメン") {
     ramenInfo = ["みそラーメン", "./img/ramen_miso.png"];
   } else {
-    rameninfo = ["地獄ラーメン", "./img/ramen.png"];
+    ramenInfo = ["地獄ラーメン", "./img/ramen.png"];
   }
   return ramenInfo;
 }
@@ -256,7 +223,6 @@ export function getRameninfo(ticket) {
  * @param {int} height 高さ
  * @returns img要素を生成し、返す
  */
-// 画像要素を生成
 export function createImageElement(src, alt, width, height) {
   const img = document.createElement("img");
   img.src = src;
@@ -266,8 +232,6 @@ export function createImageElement(src, alt, width, height) {
   return img;
 }
 
-// メニューを選択メニューにセットする
-// export function populateMenu(data) {
 export function setMenu(data) {
   const ramenTypeSelect = document.getElementById("ramenType");
   const sizeSelect = document.getElementById("size");
