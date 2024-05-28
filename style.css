@@ -1,5 +1,5 @@
 body {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
 }
@@ -62,7 +62,7 @@ body {
 }
 
 .button:hover {
-  background-color: #45a049;
+  background-color: #c12b20;
 }
 
 #img-outside {
@@ -82,7 +82,7 @@ body {
 }
 
 #img-staff {
-  height: 500px;
+  height: 300px;
   width: auto;
 }
 
@@ -99,21 +99,31 @@ body {
 #container-select {
   height: 500px;
   width: 500px;
+  padding-top: 100px;
 }
 
 #container-order {
   height: 500px;
   width: 500px;
+  text-align: center;
+  padding-top: 150px;
 }
 
 #container-cooking {
   height: 500px;
   width: 500px;
+  text-align: center;
+  padding-top: 150px;
 }
 
 #container-serve {
   height: 500px;
   width: 500px;
+  text-align: center;
+}
+
+#serveRamen {
+  display: none;
 }
 
 .container{
@@ -122,12 +132,51 @@ body {
 }
 
 .go-home {
-  height: 100%; /* 画面いっぱいに広がる */
-  margin: 0; /* 外側の余白をゼロに設定 */
-  display: flex; /* Flexbox を使用して中央揃え */
-  justify-content: center; /* 左右中央に揃える */
-  align-items: center; /* 上下中央に揃える */
-  font-size: 24px; /* テキストのフォントサイズ */
-  text-align: center; /* テキストを中央揃え */
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  text-align: center;
 }
 
+.img-menu-s {
+  height:20px;
+}
+
+.img-menu-m {
+  height:30px;
+}
+
+.img-menu-l {
+  height:40px;
+}
+
+.img-menu-2l {
+  height:50px;
+}
+
+.text-centering {
+  text-align: center;
+}
+
+.yugiri {
+  width:500px;
+  text-align: center;
+}
+
+.menu-container {
+  display: flex;
+}
+
+.menu-left {
+  text-align: right;
+  width:250px;
+  margin-right:20px;
+}
+
+.menu-right {
+  text-align: left;
+  width:250px;
+}

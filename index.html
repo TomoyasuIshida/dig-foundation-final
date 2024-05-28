@@ -21,38 +21,94 @@
         </div>
         
         <div id="container-select" class="hidden container">
-            <h2>注文を選択してください</h2>
-            <label for="money">お金を入れてください: </label>
-            <input type="number" id="money" min="0"><br>
-            <label for="ramenType">ラーメンの種類: </label>
-            <select id="ramenType"></select><br>
-            <label for="size">サイズ</label>
-            <select id="size">サイズ: </select>
-            <label for="topping1">トッピング1: </label>
-            <select id="topping1" multiple></select><br>
-            <label for="topping2">トッピング2: </label>
-            <select id="topping2" multiple></select><br>
-            <label for="topping3">トッピング3: </label>
-            <select id="topping3" multiple></select><br>
-            <button class="button" id="btn-ticket">次へ</button>
+            <div class="menu-container">
+                <div class="menu-left">
+                    <img class="img-menu-m" src="img/yen.png" alt="money">
+                </div>
+                <div class="menu-right">
+                    <input type="number" id="money" min="0"><br>
+                </div>
+            </div>
+            <div class="menu-container">
+                <div class="menu-left">
+                    <img class="img-menu-m" src="img/ramen.png" alt="ramen">
+                    <img class="img-menu-m" src="img/ramen_miso.png" alt="ramen_miso">
+                    <img class="img-menu-m" src="img/ramen_taiwan.png" alt="ramen_taiwan">
+                </div>
+               <div class="menu-right">
+                    <select id="ramenType"></select>
+                </div>
+            </div>
+            <div class="menu-container">
+                <div class="menu-left">
+                    <img class="img-menu-s" src="img/ramen.png" alt="small">
+                    <img class="img-menu-l" src="img/ramen.png" alt="big">
+                </div>
+                <div class="menu-right">
+                    <select id="size">サイズ: </select>
+                </div>
+                
+                
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-left">
+                    <img class="img-menu-2l" src="img/hoso_negi.png" alt="negi">
+                </div>
+                <div class="menu-right">
+                    
+                    <select id="topping1" multiple></select><br>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-left">
+                    <img class="img-menu-2l" src="img/nori.png" alt="nori">
+                </div>
+                <div class="menu-right">
+                    <select id="topping2" multiple></select><br>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-left">
+                    <img class="img-menu-2l" src="img/pork_bar.png" alt="pork">
+                </div>
+                <div class="menu-right">
+                    <select id="topping3" multiple></select><br>
+                </div>
+            </div>
+            <div class="text-centering">
+                <button class="button" id="btn-ticket">次へ</button>
+            </div>
         </div>
 
         <div id="container-order" class="hidden container">
-            <h2>店員に渡して、お好みを選択してください</h2>
-            <img src="staff.png" alt="店員" id="img-staff"><br>
-            <label for="noodleHardness">麺の硬さ: </label>
-            <select id="noodleHardness">
-                <option value="柔らかめ">柔らかめ</option>
-                <option value="普通">普通</option>
-                <option value="硬め">硬め</option>
-            </select><br>
-            <button class="button" id="btn-start-coooking">調理開始</button>
+            <img src="./img/staff.png" alt="店員" id="img-staff">
+            <div style="display: none;">
+                <label for="noodleHardness">麺の硬さ: </label>
+                <select id="noodleHardness">
+                    <option value="柔らかめ">柔らかめ</option>
+                    <option value="普通">普通</option>
+                    <option value="硬め">硬め</option>
+                </select><br>
+            </div>
+            <button class="button" id="btn-start-coooking">食券を渡す</button>
+            
         </div>
 
         <div id="container-cooking" class="hidden container">
-            <h2>調理中...</h2>
-            <img src="cooking.png" alt="調理中" style="width:200px;height:auto;">
-            <button class="button" id="serveRamen">ラーメンを提供</button>
+            <div class="left" style="text-align: center;">
+                <div class="yugiri">
+                    <img src="./img/ramen_yugiri.png" alt="調理中" style="width:300px;height:auto;text-align: center;">
+                </div>
+                <div class="yugiri">
+                    <p id="yugiri-text"></p>
+                </div>
+            </div>
+            <div class="right">
+                <button class="button" id="serveRamen">食券を渡す</button>
+            </div>
         </div>
 
         <div id="container-serve" class="hidden container">

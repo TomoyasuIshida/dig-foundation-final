@@ -210,7 +210,7 @@ export function getRameninfo(ticket) {
   } else if (ramen === "みそラーメン") {
     ramenInfo = ["みそラーメン", "./img/ramen_miso.png"];
   } else {
-    ramenInfo = ["地獄ラーメン", "./img/ramen.png"];
+    ramenInfo = ["地獄ラーメン", "./img/ramen_taiwan.png"];
   }
   return ramenInfo;
 }
